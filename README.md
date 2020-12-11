@@ -73,4 +73,4 @@ Tatsuki Saito
 ---
 
 # License
-[GNU General Public License v3.0](https://github.com/zjzj-zz/robosys2020_devicedriver/blob/main/COPYING) 
+[GNU General Public License v3.0](https://github.com/YuusakuSugiyama/myled/blob/main/COPYING)
