@@ -13,7 +13,7 @@ led_driver
 
 # Demo
 
-youtubeに公開したデモムービーは[こちら]
+youtubeに公開したデモムービーは[こちら](https://youtu.be/1kebJaBuN5U)  
 
 ---
 
@@ -32,7 +32,7 @@ youtubeに公開したデモムービーは[こちら]
 
 # Build
 ```sh
-$ git clone https://github.com/zjzj-zz/robosys2020_devicedriver.git
+$ git clone https://github.com/YuusakuSugiyama/myled.git
 $ cd ~/myled
 $ make
 $ sudo insmod myled.ko
