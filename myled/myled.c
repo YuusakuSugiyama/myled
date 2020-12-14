@@ -27,51 +27,51 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 	        return -EFAULT;
 
 	if(c == '0'){
-	  gpio_base[10] = 1 << 23;	
-	  gpio_base[10] = 1 << 24;
-	  gpio_base[10] = 1 << 25;
+	        gpio_base[10] = 1 << 23;	
+	        gpio_base[10] = 1 << 24;
+	        gpio_base[10] = 1 << 25;
 	}
 
 	else if(c == '1'){
-	  gpio_base[10] = 1 << 23;	
-	  gpio_base[10] = 1 << 24;
-	  gpio_base[7] = 1 << 25;
+	        gpio_base[10] = 1 << 23;	
+	        gpio_base[10] = 1 << 24;
+	        gpio_base[7] = 1 << 25;
 	}
 
 	else if(c == '2'){
-	  gpio_base[10] = 1 << 23;	
-	  gpio_base[7] = 1 << 24;
-	  gpio_base[10] = 1 << 25;	 
+	        gpio_base[10] = 1 << 23;	
+	        gpio_base[7] = 1 << 24;
+	        gpio_base[10] = 1 << 25;	 
 	}
 
 	else if(c == '3'){
-	  gpio_base[10] = 1 << 23;	
-	  gpio_base[7] = 1 << 24;
-	  gpio_base[7] = 1 << 25;
+	        gpio_base[10] = 1 << 23;	
+	        gpio_base[7] = 1 << 24;
+	        gpio_base[7] = 1 << 25;
 	}
 
 	else if(c == '4'){
-	  gpio_base[7] = 1 << 23;
-	  gpio_base[10] = 1 << 24;
-	  gpio_base[10] = 1 << 25;
+	        gpio_base[7] = 1 << 23;
+	        gpio_base[10] = 1 << 24;
+	        gpio_base[10] = 1 << 25;
 	}
 
 	else if(c == '5'){
-	  gpio_base[7] = 1 << 23;
-	  gpio_base[10] = 1 << 24;
-	  gpio_base[7] = 1 << 25;
+	        gpio_base[7] = 1 << 23;
+	        gpio_base[10] = 1 << 24;
+	        gpio_base[7] = 1 << 25;
 	}
 
 	else if(c == '6'){
-	  gpio_base[7] = 1 << 23;
-	  gpio_base[7] = 1 << 24;
-	  gpio_base[10] = 1 << 25;
+	        gpio_base[7] = 1 << 23;
+	        gpio_base[7] = 1 << 24;
+	        gpio_base[10] = 1 << 25;
 	}
 
 	else if(c == '7'){
-	  gpio_base[7] = 1 << 23;
-	  gpio_base[7] = 1 << 24;
-	  gpio_base[7] = 1 << 25;
+	        gpio_base[7] = 1 << 23;
+	        gpio_base[7] = 1 << 24;
+	        gpio_base[7] = 1 << 25;
 	}
 
 
@@ -84,8 +84,8 @@ static ssize_t sushi_read(struct file* filp, char* buf, size_t count, loff_t* po
 	int size = 0;
 	char sushi[] = {'s','u','s','h','i',0x0A}; 
 	if(copy_to_user(buf+size,(const char *)sushi, sizeof(sushi))){
-	   printk( KERN_INFO "sushi : copy_to_user failed\n" );
-	   return -EFAULT;
+	        printk( KERN_INFO "sushi : copy_to_user failed\n" );
+	        return -EFAULT;
 	}
 	size += sizeof(sushi);
 	return size;
@@ -105,8 +105,8 @@ static int __init init_mod(void)
 	retval =  alloc_chrdev_region(&dev, 0, 1, "myled");
 
         if(retval < 0){
-	printk(KERN_ERR "alloc_chrdev_region failed.\n");
-	return retval;
+	        printk(KERN_ERR "alloc_chrdev_region failed.\n");
+	        return retval;
 	}
 
 	printk(KERN_INFO "%s is loaded. major:%d\n",__FILE__,MAJOR(dev));
@@ -115,15 +115,15 @@ static int __init init_mod(void)
 	retval = cdev_add(&cdv, dev, 1);
 
 	if(retval < 0){
-	printk(KERN_ERR "cdev_add failed. major:%d, minor:%d",MAJOR(dev),MINOR(dev));
-	return retval;
+	        printk(KERN_ERR "cdev_add failed. major:%d, minor:%d",MAJOR(dev),MINOR(dev));
+	        return retval;
         }
 
 	cls = class_create(THIS_MODULE,"myled");
 
 	if(IS_ERR(cls)){
-	printk(KERN_ERR "class_create failed.");
-	return PTR_ERR(cls);
+	        printk(KERN_ERR "class_create failed.");
+	        return PTR_ERR(cls);
 	}
 	device_create(cls, NULL, dev, NULL, "myled%d",MINOR(dev));
 
