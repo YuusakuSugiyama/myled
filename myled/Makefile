@@ -1,7 +1,4 @@
-// SPDX-License-Identifer: GPL-3.0
-/*
- * Copyright (c) 2020 YuusakuSugiyama. All rights reserved.
- */
+
  
  obj-m := myled.o
 
